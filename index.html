@@ -93,7 +93,7 @@
             };
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting || entry.boundingClientRect.top < window.innerHeight) {
+                    if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
                         observer.unobserve(entry.target);
                     }
@@ -102,6 +102,13 @@
             
             document.querySelectorAll('.svg-container, .map-container').forEach(element => {
                 observer.observe(element);
+            });
+
+            // Manually trigger visibility for elements initially in the viewport
+            document.querySelectorAll('.svg-container, .map-container').forEach(element => {
+                if (element.getBoundingClientRect().top < window.innerHeight) {
+                    element.classList.add('visible');
+                }
             });
         });
     </script>
