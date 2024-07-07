@@ -20,7 +20,7 @@
         .svg-container, .map-container {
             width: 100%;
             max-width: 600px;
-            background: rgba(200, 200, 200, 0.4); /* Darker shade of pearl */
+            background: rgba(200, 200, 200, 0.8); /* Darker shade of pearl */
             border-radius: 10px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             margin: 20px 0;
@@ -56,9 +56,16 @@
             margin: 10px 0;
         }
         p {
-            margin: 10px 0;
+            display: flex;
+            align-items: center;
             font-size: 1.1em;
             color: #333;
+            margin: 10px 0;
+        }
+        .icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -68,12 +75,12 @@
     </div>
     <div class="map-container">
         <h2>Ceremonia</h2>
-        <p>Ceremonia religiosa, en la Capilla Salesiana de Maria Auxiliadora a las 4:00 p.m.</p>
+        <p><img src="https://img.icons8.com/material-outlined/24/000000/chapel.png" class="icon" alt="Ceremonia Icon"/>Ceremonia religiosa, en la Capilla Salesiana de Maria Auxiliadora a las 4:00 p.m.</p>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3736.4011652778997!2d-102.7330835!3d20.0618776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842ee34c7444f525%3A0xa89b2d2e85cd903d!2sCapilla%20Salesiana%20de%20Mar%C3%ADa%20Auxiliadora!5e0!3m2!1sen!2smx!4v1699177466892!5m2!1sen!2smx" class="map-embed"></iframe>
     </div>
     <div class="map-container">
         <h2>Recepción</h2>
-        <p>Recepción en Quinta Fatima 6:00 p.m. Perla #128 Col. Valle Verde, Sahuayo Michoacán</p>
+        <p><img src="https://img.icons8.com/material-outlined/24/000000/party.png" class="icon" alt="Recepción Icon"/>Recepción en Quinta Fatima 6:00 p.m. Perla #128 Col. Valle Verde, Sahuayo Michoacán</p>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3736.4011652778997!2d-102.7330835!3d20.0618776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842ee34c7444f525%3A0xa89b2d2e85cd903d!2sCapilla%20Salesiana%20de%20Mar%C3%ADa%20Auxiliadora!5e0!3m2!1sen!2smx!4v1699177466892!5m2!1sen!2smx" class="map-embed"></iframe>
     </div>
     <script>
