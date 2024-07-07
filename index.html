@@ -12,22 +12,22 @@
             height: 100vh;
             background-color: #f0f0f0;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             box-sizing: border-box;
-            overflow: hidden; /* Prevent scrolling */
         }
         .svg-container {
             width: 100%;
-            max-width: 600px;
-            height: auto;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            animation: fadeIn 2s ease-in-out;
+            overflow: hidden; /* Prevent scrolling */
         }
-        svg {
+        object {
             width: 100%;
-            height: auto;
+            height: 100%;
+            max-width: 600px;
+            max-height: 90vh; /* Make sure it fits within the viewport height */
         }
         @keyframes fadeIn {
             from {
@@ -37,10 +37,13 @@
                 opacity: 1;
             }
         }
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
     </style>
 </head>
 <body>
-    <div class="svg-container">
+    <div class="svg-container fade-in">
         <object type="image/svg+xml" data="invitacion.svg"></object>
     </div>
 </body>
