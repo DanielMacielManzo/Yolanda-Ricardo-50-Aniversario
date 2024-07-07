@@ -24,12 +24,12 @@
             background: rgba(255, 255, 255, 0.5); /* Darker shade of pearl */
             border-radius: 10px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            margin: 10px 0;
-            padding: 10px;
+            margin: 20px 0;
+            padding: 20px;
             overflow: hidden;
             opacity: 0; /* Initial state for fade-in */
             transform: translateY(50px); /* Initial state for fly-in from bottom */
-            transition: opacity .5s ease-in-out, transform 1.5s ease-in-out; /* Smooth transition */
+            transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out; /* Smooth transition */
         }
         .visible {
             opacity: 1; /* Visible state for fade-in */
@@ -66,7 +66,25 @@
         .icon {
             margin-right: 10px;
         }
+        #play-button {
+            display: none; /* Initially hide the button */
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Yolanda & Ricardo Bodas De Oro" />
+    <meta property="og:description" content="Join us in celebrating the 50th wedding anniversary of Yolanda and Ricardo." />
+    <meta property="og:image" content="https://raw.githubusercontent.com/DanielMacielManzo/Yolanda-Ricardo-50-Aniversario/main/invitacion.jpg" />
+    <meta property="og:url" content="https://danielmacielmanzo.github.io/Yolanda-Ricardo-50-Aniversario/" />
+    <meta property="og:type" content="website" />
 </head>
 <body>
     <div class="svg-container">
@@ -90,7 +108,7 @@
             
             svgObject.addEventListener('load', function() {
                 const options = {
-                    threshold: 0.4
+                    threshold: 1
                 };
                 const observer = new IntersectionObserver((entries, observer) => {
                     entries.forEach(entry => {
