@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Invitation</title>
+    <title>Yolanda & Ricardo Bodas De Oro</title>
     <style>
         body {
             display: flex;
@@ -14,12 +14,20 @@
             margin: 0;
             padding: 20px;
             box-sizing: border-box;
+            overflow: hidden; /* Prevent scrolling */
+        }
+        .svg-container {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 2s ease-in-out;
         }
         svg {
             width: 100%;
             height: auto;
-            max-width: 600px;
-            animation: fadeIn 2s ease-in-out;
         }
         @keyframes fadeIn {
             from {
@@ -32,6 +40,8 @@
     </style>
 </head>
 <body>
-    <object type="image/svg+xml" data="invitacion.svg" style="width: 100%; height: auto;"></object>
+    <div class="svg-container">
+        <object type="image/svg+xml" data="invitation.svg"></object>
+    </div>
 </body>
 </html>
