@@ -108,7 +108,7 @@
             
             svgObject.addEventListener('load', function() {
                 const options = {
-                    threshold: 1
+                    threshold: 0.4
                 };
                 const observer = new IntersectionObserver((entries, observer) => {
                     entries.forEach(entry => {
