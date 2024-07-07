@@ -26,7 +26,13 @@
             margin: 20px 0;
             padding: 20px;
             overflow: hidden;
-            animation: float 3s ease-in-out infinite, fadeIn 2s ease-in-out;
+            opacity: 0; /* Initial state for fade-in */
+            transform: translateY(20px); /* Initial state for float */
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Smooth transition */
+        }
+        .visible {
+            opacity: 1; /* Visible state for fade-in */
+            transform: translateY(0); /* Visible state for float */
         }
         .svg-container {
             height: auto;
@@ -37,25 +43,6 @@
         object {
             width: 100%;
             height: auto;
-        }
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        .fade-in {
-            animation: fadeIn 2s ease-in-out;
         }
         .map-embed {
             width: 100%;
@@ -71,14 +58,34 @@
     </style>
 </head>
 <body>
-    <div class="svg-container fade-in">
+    <div class="svg-container">
         <object type="image/svg+xml" data="invitacion.svg"></object>
     </div>
-    <div class="map-container fade-in">
+    <div class="map-container">
         <h2>Ceremonia</h2>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3736.4011652778997!2d-102.7330835!3d20.0618776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842ee34c7444f525%3A0xa89b2d2e85cd903d!2sCapilla%20Salesiana%20de%20Mar%C3%ADa%20Auxiliadora!5e0!3m2!1sen!2smx!4v1699177466892!5m2!1sen!2smx" class="map-embed"></iframe>
         <h2>Recepción</h2>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3736.4011652778997!2d-102.7330835!3d20.0618776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842ee34c7444f525%3A0xa89b2d2e85cd903d!2sCapilla%20Salesiana%20de%20Mar%C3%ADa%20Auxiliadora!5e0!3m2!1sen!2smx!4v1699177466892!5m2!1sen!2smx" class="map-embed"></iframe>
     </div>
+    <script>
+        // Intersection Observer to add 'visible' class when elements come into view
+        document.addEventListener("DOMContentLoaded", function() {
+            const options = {
+                threshold: 0.1
+            };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+            
+            document.querySelectorAll('.svg-container, .map-container').forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
 </body>
 </html>
