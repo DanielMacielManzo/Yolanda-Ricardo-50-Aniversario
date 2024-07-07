@@ -21,7 +21,7 @@
         .svg-container, .map-container {
             width: 100%;
             max-width: 600px;
-            background: rgba(200, 200, 200, 0.4); /* Darker shade of pearl */
+            background: rgba(255, 255, 255, 0.5); /* Darker shade of pearl */
             border-radius: 10px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             margin: 20px 0;
@@ -29,7 +29,7 @@
             overflow: hidden;
             opacity: 0; /* Initial state for fade-in */
             transform: translateY(50px); /* Initial state for fly-in from bottom */
-            transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out; /* Smooth transition */
+            transition: opacity .5s ease-in-out, transform 1.5s ease-in-out; /* Smooth transition */
         }
         .visible {
             opacity: 1; /* Visible state for fade-in */
@@ -70,7 +70,7 @@
 </head>
 <body>
     <div class="svg-container">
-        <object type="image/svg+xml" data="invitacion.svg"></object>
+        <object type="image/svg+xml" data="invitacion.svg" id="svg-object"></object>
     </div>
     <div class="map-container">
         <h2><i class="fas fa-church icon"></i>Ceremonia Religiosa</h2>
@@ -85,29 +85,28 @@
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3747.617098846296!2d-102.72683762596564!3d20.066474781352866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842ee309ad100f03%3A0x5a055a4a9ce30a8!2sQuinta%20Fatima!5e0!3m2!1sen!2sus!4v1720335877590!5m2!1sen!2sus" class="map-embed"></iframe>    
     </div>
     <script>
-        // Intersection Observer to add 'visible' class when elements come into view
         document.addEventListener("DOMContentLoaded", function() {
-            const options = {
-                threshold: 0.1
-            };
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, options);
+            const svgObject = document.getElementById('svg-object');
             
-            document.querySelectorAll('.svg-container, .map-container').forEach(element => {
-                observer.observe(element);
-            });
+            svgObject.addEventListener('load', function() {
+                const options = {
+                    threshold: 0.2
+                };
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, options);
+                
+                document.querySelectorAll('.map-container').forEach(element => {
+                    observer.observe(element);
+                });
 
-            // Manually trigger visibility for elements initially in the viewport
-            document.querySelectorAll('.svg-container, .map-container').forEach(element => {
-                if (element.getBoundingClientRect().top < window.innerHeight) {
-                    element.classList.add('visible');
-                }
+                // Ensure the SVG container itself is also made visible after load
+                document.querySelector('.svg-container').classList.add('visible');
             });
         });
     </script>
